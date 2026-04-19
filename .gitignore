@@ -21,3 +21,11 @@ mockup_apropos_responsive.html
 mockup_eta2.png
 Sans titre.Rmd
 Sans-titre.html
+
+# Node (pour le generateur de rapport)
+rapport/node_modules/
+rapport/package-lock.json
+
+# Word temporary files
+~$*.docx
+~$*.doc
