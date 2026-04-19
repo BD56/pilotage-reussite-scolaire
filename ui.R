@@ -328,6 +328,19 @@ page_navbar(
         }
       }
 
+      /* ---- Data card (onglet Donnees) : pleine hauteur ---- */
+      .data-card {
+        height: calc(100vh - 160px) !important;
+        min-height: 500px !important;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      }
+      .data-card .card-body {
+        height: 100% !important;
+        overflow: auto !important;
+        padding: 12px 16px;
+      }
+
       /* ---- DT table ---- */
       table.dataTable thead th {
         background: #F8F9FA !important;
@@ -342,6 +355,50 @@ page_navbar(
       }
       table.dataTable tbody tr:hover {
         background: rgba(67, 97, 238, 0.05) !important;
+      }
+
+      /* ---- DT pagination : couleurs harmonisees ---- */
+      /* bslib + DT utilisent les classes Bootstrap 5 : .page-item / .page-link */
+      .dataTables_paginate .pagination {
+        --bs-pagination-color: #4361EE;
+        --bs-pagination-bg: transparent;
+        --bs-pagination-border-color: #E2E8F0;
+        --bs-pagination-hover-color: #4361EE;
+        --bs-pagination-hover-bg: rgba(67, 97, 238, 0.08);
+        --bs-pagination-hover-border-color: rgba(67, 97, 238, 0.3);
+        --bs-pagination-active-color: #FFFFFF;
+        --bs-pagination-active-bg: #4361EE;
+        --bs-pagination-active-border-color: #4361EE;
+        --bs-pagination-disabled-color: #CBD5E1;
+        --bs-pagination-disabled-bg: transparent;
+        --bs-pagination-disabled-border-color: #E2E8F0;
+        --bs-pagination-border-radius: 6px;
+        --bs-pagination-padding-x: 10px;
+        --bs-pagination-padding-y: 4px;
+        --bs-pagination-font-size: 0.82rem;
+        gap: 3px;
+      }
+      .dataTables_paginate .page-item .page-link {
+        border-radius: 6px !important;
+      }
+      .dataTables_paginate .page-item.active .page-link {
+        background: linear-gradient(135deg, #4361EE, #3A86FF) !important;
+        border-color: #4361EE !important;
+        box-shadow: 0 2px 8px rgba(67, 97, 238, 0.3);
+      }
+      .dataTables_info {
+        font-size: 0.78rem !important;
+        color: #7F8C8D !important;
+        padding: 8px 4px !important;
+      }
+      .dataTables_length, .dataTables_filter {
+        font-size: 0.82rem !important;
+      }
+      .dataTables_length select, .dataTables_filter input {
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 6px !important;
+        padding: 4px 8px !important;
+        font-size: 0.82rem !important;
       }
 
       /* ---- Scrollbar ---- */
@@ -867,8 +924,10 @@ page_navbar(
   nav_panel(
     title = "Donn\u00e9es",
     icon = icon("table"),
+    fillable = TRUE,
     card(
-      class = "chart-card",
+      class = "data-card",
+      full_screen = TRUE,
       card_header(
         class = "chart-card-header",
         "Donn\u00e9es filtr\u00e9es",
@@ -877,7 +936,7 @@ page_navbar(
                        style = "background: #4361EE; color: white; border: none; border-radius: 8px; font-size: 0.78rem;")
       ),
       card_body(
-        DTOutput("table_data")
+        DTOutput("table_data", height = "100%")
       )
     )
   ),
