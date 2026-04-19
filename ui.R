@@ -17,7 +17,7 @@ page_navbar(
     font_scale = 0.9,
     "navbar-bg" = "#FFFFFF"
   ),
-  fillable = TRUE,
+  fillable = FALSE,
   id = "main_nav",
 
   # ============================================================
@@ -354,6 +354,19 @@ page_navbar(
       .modal-content { border-radius: 16px !important; border: none !important; }
       .modal-header { border-bottom: 1px solid #F0F2F5 !important; }
       .modal-footer { border-top: 1px solid #F0F2F5 !important; }
+
+      /* ---- Min-height pour assurer la lisibilite des graphiques ---- */
+      /* Les plotlyOutput definissent une hauteur nominale ; on s'assure
+         que leur container respecte bien cette hauteur + padding */
+      .chart-card {
+        min-height: 280px;
+      }
+      /* Card specifique pour le barplot eta2 (19 labels) */
+      #barplot_eta2 { min-height: 500px !important; }
+      /* Heatmap de correlation */
+      #heatmap_cor { min-height: 380px !important; }
+      /* Histogramme */
+      #hist_scores { min-height: 300px !important; }
 
       /* ---- Chart help icon ---- */
       .chart-help-icon {
