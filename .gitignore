@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# R session
+.RData
+.Rhistory
+.Rapp.history
+.Rproj.user/
+
+# Deployment (contient des tokens)
+rsconnect/
+
+# IDE
+.claude/
+.vscode/
+.idea/
+
+# Mockups et fichiers temporaires
+mockup_apropos.html
+mockup_apropos_responsive.html
+mockup_eta2.png
+Sans titre.Rmd
+Sans-titre.html
